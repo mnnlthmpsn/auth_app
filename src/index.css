@@ -1,13 +1,49 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+    @apply text-sm text-[#333];
+    font-family: 'Noto Sans', sans-serif;
+}
+.svg-light {
+    fill: #828282;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.kPadding {
+    @apply p-6
+}
+
+.kPadding-md {
+    @apply p-10
+}
+
+.header1 {
+    @apply text-2xl
+}
+
+.header2 {
+    @apply text-lg
+}
+
+.subtitle1 {
+    @apply text-[#828282]
+}
+
+.subtitle-sm {
+    @apply text-[#828282] text-xs
+}
+
+.bg-blue {
+    @apply bg-[#2F80ED]
+}
+
+.text-blue {
+    @apply text-[#2F80ED]
+}
+
+.form-control {
+    @apply px-4 py-2 border rounded outline-none
 }
