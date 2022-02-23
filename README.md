@@ -17,4 +17,4 @@ Launches the development server and can be accesse at http://localhost:3000
 
 ## Available Scripts
 
-For further details checkout the [https://reactjs.org/docs/getting-started.html](React Docs)
+For further details checkout the [React Docs](https://reactjs.org/docs/getting-started.html)
