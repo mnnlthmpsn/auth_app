@@ -1,20 +1,34 @@
+import { useCallback, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Header, Image, IdentityWidget } from '../components/components';
 import { Container } from '../components/layouts/layouts';
+import { useGraphQL } from '../hooks/hooks'
 
 
 const Home = () => {
 
     const navigate = useNavigate()
+    const { query } = useGraphQL()
+    const [user, setUser] = useState(null)
+    
+    const getUser = useCallback(async () => {
+        const q = '{user { id, email }}'
+        const { data } = await query(q)
+        setUser(data.user[0])
+    }, [query])
 
     const dummyData = [
         { key: 'photo', value: <Image type='thumbnail' url='https://images.unsplash.com/photo-1557862921-37829c790f19?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8bWFufGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60' /> },
         { key: 'name', value: 'Xanthe Neal' },
         { key: 'bio', value: 'I am a Software developer and a big fan of devchallenges' },
         { key: 'phone', value: '908249274292' },
-        { key: 'email', value: 'xanthe.neal@gmail.com' },
+        { key: 'email', value: user?.email },
         { key: 'password', value: '**********' }
     ]
+
+    useEffect(() => {
+        getUser()
+    }, [getUser])
 
     const toEditDetails = e => navigate('/details')
 
@@ -47,7 +61,7 @@ const Home = () => {
 
                     {
                         [...dummyData].map(data => (
-                            <GridBuilder title={data.key} value={data.value} />
+                            <GridBuilder title={data.key} value={data.value} key={data.key} />
                         ))
                     }
 

@@ -2,6 +2,7 @@ import { Register, Login, Home, Details } from './pages/pages'
 import { Routes, Route } from 'react-router-dom'
 
 const App = () => {
+
     return (
         <Routes>
             <Route path="/" element={<Register />} />

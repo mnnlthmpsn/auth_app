@@ -1,15 +1,27 @@
 import { Menu, Transition } from '@headlessui/react'
 import { Image } from './components'
-import { Fragment } from 'react'
+import { Fragment, useCallback, useEffect, useState } from 'react'
+import { useGraphQL } from '../hooks/hooks'
 
 const KDropdown = ({ menus }) => {
+
+    const { query } = useGraphQL()
+    const [user, setUser] = useState(null)
+
+    const getUser = useCallback(async () => {
+        const q = '{user { id, email }}'
+        const { data } = await query(q)
+        setUser(data.user[0])
+    }, [query])
+
+    useEffect(() => getUser(), [getUser])
     return (
         <Menu as="div" className="relative inline-block text-left">
             <div>
                 <Menu.Button className="flex space-x-2 items-center text-xs">
                     <Image type='small' url='https://images.unsplash.com/photo-1557862921-37829c790f19?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8bWFufGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60' />
-                    <p className='font-bold'>Xanthe Neal</p>
-                    <span class="material-icons text-xs">
+                    <p className='font-bold'>{user?.email}</p>
+                    <span className="material-icons text-xs">
                         expand_less
                     </span>
                 </Menu.Button>
@@ -30,7 +42,7 @@ const KDropdown = ({ menus }) => {
                                 <Menu.Item key={menu.icon}>
                                     {({ active }) => (
                                         <button
-
+                                            onClick={menu.onclick}
                                             className={`${active ? 'bg-gray-100' : null
                                                 } group flex rounded-md items-center w-full px-2 py-2 text-sm`}
                                         >

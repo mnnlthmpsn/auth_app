@@ -33,7 +33,7 @@ const Details = () => {
                     <div className="flex space-x-6 items-center">
                         <div className="flex items-center justify-center" onClick={openFileBrowser}>
                             <Image type='thumbnail' url='https://images.unsplash.com/photo-1557862921-37829c790f19?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8bWFufGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60' />
-                            <span class="material-icons absolute text-gray-100 cursor-pointer">
+                            <span className="material-icons absolute text-gray-100 cursor-pointer">
                                 photo_camera
                             </span>
                         </div>

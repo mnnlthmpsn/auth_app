@@ -5,7 +5,7 @@ const Image = ({ url, type }) => {
         'small': 'rounded w-8 h-8 object-cover object-top',
     }
 
-    return <img src={url} className={imageTypes[type]} />
+    return <img src={url} alt={imageTypes[type]} className={imageTypes[type]} />
 }
 
 export default Image
